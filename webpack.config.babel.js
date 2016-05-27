@@ -20,13 +20,6 @@
  *
  */
 
-// TODO:
-// See if it is possible to build the md-files in separate chunks. How? Perhaps separate entries?
-// Or perhaps CommonsChunkPlugin manages that by itself?
-// Preferrably we want each course in a separate chunk.
-// Btw, Should the courses be listed in a specific order? What is done on website today?
-// I guess it would be ok to list the courses manually...
-
 
 ////////////////////////////////////////
 // DEFINE GLOBAL VARIABLES FOR ESLINT //
@@ -128,16 +121,14 @@ function getPlugins(){
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
       async: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     })
   ];
 
   if (isProduction) {
     plugins = plugins.concat([
-      new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify('production')
-        }
-      }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.optimize.UglifyJsPlugin({

@@ -1,3 +1,6 @@
+// polyfill webpack require.ensure
+if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require);
+
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 import App from './pages/App';
@@ -31,10 +34,12 @@ const getComponentLessonPage = (nextState, cb) => {
   });
 };
 
-module.exports = (
+const routes = (
   <Route path="/" component={App}>
     <IndexRoute getComponent={getComponentFrontPage}/>
     <Route path="/:course" getComponent={getComponentPlaylist}/>
     <Route path="/:course/:lesson/:file" getComponent={getComponentLessonPage}/>
   </Route>
 );
+
+export default routes;

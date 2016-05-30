@@ -61,15 +61,20 @@ app.get('*', (req, res) => {
 
 
 function renderPage(appHtml) {
-  return `
-    <!doctype html public="storage">
-    <html>
-    <meta charset=utf-8/>
-    <title>My First React Router App</title>
-    <link rel=stylesheet href=/index.css>
-    <div id=app>${appHtml}</div>
-    <script src="/bundle.js"></script>
-   `;
+  return (
+  `<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>From server: Kodeklubben</title>
+<link href="/vendor2.css" rel="stylesheet"></head>
+<body>
+    <div id="app">
+          <div>${appHtml}</div>
+    </div>
+<script src="/manifest.js"></script><script src="/vendor.js"></script><script src="/main.js"></script><script src="/vendor2.js"></script></body>
+</html>`
+  );
 }
 
 var PORT = process.env.PORT || 8080;

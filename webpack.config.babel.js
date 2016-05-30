@@ -64,7 +64,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 console.log(`isProduction=${isProduction}`);
 console.log();
 
-const filenameBase = isHot ? '[name]' : '[name].[chunkhash]';
+//const filenameBase = isHot ? '[name]' : '[name].[chunkhash]';
+const filenameBase = '[name]';
 
 
 ///////////////

@@ -30,6 +30,7 @@
 //////////////////////
 // IMPORT / REQUIRE //
 //////////////////////
+import configBase from './webpack.base.config.babel';
 const webpack = require('webpack');
 
 import path from 'path';
@@ -37,14 +38,7 @@ import autoprefixer from 'autoprefixer';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
-import ForceCaseSensitivityPlugin from 'force-case-sensitivity-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
-import MarkdownItAnchor from 'markdown-it-anchor';
-import MarkdownItAttrs from 'markdown-it-attrs';
-import MarkdownItHeaderSections from 'markdown-it-header-sections';
-import MarkdownItImplicitFigures from 'markdown-it-implicit-figures';
-
 
 ///////////////
 // CONSTANTS //
@@ -53,10 +47,6 @@ const buildDir = 'dist';
 const publicPath = '/';
 
 const cssModuleLoaderStr = 'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]';
-
-// Loaders for lesson files written in markdown (.md)
-const frontmatterLoaders = ['json', 'front-matter?onlyAttributes'];
-const contentLoaders = ['html', 'markdown-it', 'front-matter?onlyBody'];
 
 const isHot = process.argv.indexOf('--hot') >= 0;
 console.log(`isHot=${isHot}`);
@@ -122,7 +112,6 @@ function getPlugins(){
       inject: 'body',
       chunksSortMode: 'dependency' // Make sure they are loaded in the right order in index.html
     }),
-    new ForceCaseSensitivityPlugin(),
 
     // Extract common chunks due to code splitting (such as lessons) and have them loaded in parallel.
     // See https://github.com/webpack/docs/wiki/list-of-plugins#4-extra-async-commons-chunk
@@ -169,6 +158,7 @@ function getPlugins(){
 ///////////////////////
 
 const config = {
+  ...configBase,
   entry: getEntry(),
   module: {
     loaders: [
@@ -203,29 +193,6 @@ const config = {
       }
     ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      lessonSrc: path.resolve(__dirname, '../oppgaver/src/')
-    }
-  },
-  resolveLoader: {
-    root: [path.resolve(__dirname, 'node_modules')],
-    alias: {
-      // Markdown-files are parsed only through one of these three aliases, and are
-      // not parsed automatically by adding a loader with test /\.md$/ for two reasons:
-      // 1) We don't want to use '!!' in the requires in the modules, and
-      // 2) Since the lessons create a lot of data, we want to be sure that we only load
-      //    what we need by being explicit in the requires, e.g. require('onlyFrontmatter!./file.md')
-      //    It is even more important when using in require.context('onlyFrontmatter!./path', ....)
-      'onlyFrontmatter': 'combine?' + JSON.stringify({frontmatter: frontmatterLoaders}),
-      'onlyContent': 'combine?' + JSON.stringify({content: contentLoaders}),
-      'frontAndContent': 'combine?' + JSON.stringify({
-        frontmatter: frontmatterLoaders,
-        content: contentLoaders
-      })
-    }
-  },
   output: {
     path: path.resolve(__dirname, buildDir),
     publicPath: publicPath,
@@ -239,17 +206,7 @@ const config = {
     index: publicPath
   },
   plugins: getPlugins(),
-  postcss: [autoprefixer],
-  'markdown-it': {
-    preset: 'commonmark',
-    //typographer: true,
-    use: [
-      MarkdownItAnchor,
-      MarkdownItAttrs,
-      MarkdownItHeaderSections,
-      MarkdownItImplicitFigures
-    ]
-  }
+  postcss: [autoprefixer]
 };
 
 export default config;

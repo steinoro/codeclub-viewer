@@ -20,7 +20,8 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'server.bundle.js'
+    filename: 'server.bundle.js',
+    chunkFilename: '[name].[chunkhash:5].js'
   },
 
   target: 'node',
@@ -54,7 +55,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=5000&name=[path][name].[hash:6].[ext]'
+        loader: 'url-loader?limit=5000&name=/[path][name].[hash:5].[ext]'
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,

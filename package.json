@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server -d --progress --inline --hot",
-    "build:dev": "webpack -d --progress",
+    "build": "webpack -d --progress",
     "build:prod": "cross-env NODE_ENV=production webpack -p --progress",
     "build:server": "webpack --config webpack.server.config.babel.js --progress",
-    "build": "npm run build:prod && npm run build:server",
+    "buildall": "npm run build && npm run build:server",
+    "buildall:prod": "npm run build:prod && npm run build:server",
     "serve": "node dist/server.bundle.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js|.jsx)\"",
     "test:watch": "npm run test -- --watch",

@@ -64,8 +64,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 console.log(`isProduction=${isProduction}`);
 console.log();
 
-//const filenameBase = isHot ? '[name]' : '[name].[chunkhash]';
-const filenameBase = '[name]';
+const filenameBase = isHot ? '[name]' : '[name].[chunkhash:5]';
 
 
 ///////////////
@@ -109,8 +108,16 @@ function getEntry(){
 
 function getPlugins(){
   let plugins = [
+    // new HtmlWebpackPlugin({
+    //   title: 'Kodeklubben',
+    //   template: 'src/index-template.ejs',
+    //   inject: 'body',
+    //   chunksSortMode: 'dependency' // Make sure they are loaded in the right order in index.html
+    // }),
     new HtmlWebpackPlugin({
-      title: 'Kodeklubben',
+      title: 'Kodeklubben (server)',
+      filename: 'server-template.ejs',
+      appcontent: '<%= appHtml %>',
       template: 'src/index-template.ejs',
       inject: 'body',
       chunksSortMode: 'dependency' // Make sure they are loaded in the right order in index.html
@@ -179,7 +186,7 @@ const config = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=5000&name=[path][name].[hash:6].[ext]'
+        loader: 'url-loader?limit=5000&name=[path][name].[hash:5].[ext]'
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,

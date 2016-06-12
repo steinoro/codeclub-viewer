@@ -55,4 +55,6 @@ Jo, fordi det der ligger en index.html. Denne trengs ikke når man bruker server
 Så lenge den html'en som server leverer tilbake
 passer på å laste alle js-filene (som ble laget i build:dev), så går server-rendering bra.
 
-Men hvordan skal vi få laget statiske filer?
+Men hvordan skal vi få laget statiske filer? Kanskje vi kan ha en egen webpack.config.static.babel.js, akkurat
+som vi har en egen webpack og build for server? Så kan vi splitte filene som har require.ensure, require.context
+m.m. (en versjon per static og client)

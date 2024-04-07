@@ -26,27 +26,27 @@ export default {
     otherwebsitecourses: 'Námskeið á öðrum vefsíðum',
     continueButton: 'Heimsótt síðast',
     teacherinfobox: {
-      header: 'Halló! Þú ert núna á síðu fyrir kennara',
-      changemode: 'Ertu ekki kennari eða leiðbeinandi? Smelltu á nemanda- eða ' +
-                'kennarahnappinn uppi í hægra horni til að skipta á milli. ' +
-                'Frekari upplýsingar fást með því að smella á plúsinn að neðan.',
+      header: 'Hæ! Þú ert núna á síðu fyrir kennara',
+      changemode: 'Ertu ekki kennari eða leiðbeinandi? Smelltu á viðmótstakkann ' +
+                'uppi í hægra horni til að skipta um viðmót. ' +
+                'Frekari upplýsingar fást með því að smella á plúsinn hér fyrir neðan.',
       teacher: 'Kennari',
-      info1: 'Skoðaðu flipana og leiðbeiningarnar okkar. Á vinstri hlið ' +
+      info1: 'Skoðaðu flipana og leiðbeiningarnar okkar. Til vinstri ' +
             'finnurðu flipa fyrir mismunandi fög þar sem þú getur fundið ' +
             'viðeigandi verkefni fyrir þína kennslu. Þegar þú hefur valið ' +
-            'fög geturðu einungis séð þau verkefni sem okkar kennarar telja ' +
+            'fag/fög geturðu einungis séð þau verkefni sem okkar kennarar telja ' +
             'viðeigandi og þú getur valið á hvaða tungumáli þú vilt kenna.',
       link1: 'Hér geturðu lært meira um forritun í kennslustofunni (á norsku)',
       assistant: 'Leiðbeinandi',
       info2: 'Verkefnin okkar gera ráð fyrir að börnin vinni mikið ' +
             'sjálfstætt, en við mælum með að byrja hverja kennslustund á ' +
-            '10-15 mínútna kynningu á verkefninu og því sem gæti verið nýtt ' +
+            '10-15 mínútna kynningu á verkefninu og á því sem gæti verið nýtt ' +
              'í þetta skiptið. Núna geturðu auðveldlega flokkað verkefni ' +
              'eftir þema og öllum verkefnum fylgja leiðbeiningar sem þú ' +
              'getur skoðað við undirbúning fyrir kennsluna. Við mælum með ' +
              'forritun byggðri á kubbum fyrir byrjendur, en síðan er algengt ' +
              'að vinna í Python / Web / Processing í framhaldi.',
-      link2: 'Hér geturðu lært meira um að stjórna kóðaklúbbi (á norsku)',
+      link2: 'Hér geturðu lært meira um að leiða kóðaklúbbum (á norsku)',
       plus: 'Smelltu hér fyrir frekari upplýsingar',
       minus: 'Smelltu hér fyrir færri upplýsingar',
     },
@@ -72,7 +72,7 @@ export default {
       'Bakgrunnsgrafík til að fá fleiri liti.',
     print: 'Prenta',
     toteacherinstruction: 'Leiðbeiningar fyrir kennara',
-    tolesson: 'Til verkefnis',
+    tolesson: 'Skoða verkefnalýsingu',
     reset: 'Endurstilla tékklista',
     tomainlanguage: 'Tungumál: {{lang}}',
     nottranslated: 'Síðan er ekki til á íslensku',
@@ -108,7 +108,7 @@ export default {
     removefilter: 'Hreinsa flipa',
   },
   navbar: {
-    mode: 'Máti',
+    mode: 'Viðmót',
     lkknav: {
       aboutlkk: 'Um LKK',
       news: 'Fréttir',
@@ -126,7 +126,7 @@ export default {
   },
   footer: {
     contribute: 'Búðu til þitt eigið verkefni',
-    dyslexia: 'Texti fyrir lesblinda',
+    dyslexia: 'Leturgerð fyrir lesblinda',
   },
   404: {
     header: 'Afsakið',
